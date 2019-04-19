@@ -7,6 +7,7 @@ which is based on a pre-trained model.
 import time
 from functions import clean_text, get_sentiment_score
 import pandas as pd
+import os
 
 # ----------------------
 # Run Google API Analysis
@@ -19,8 +20,6 @@ print("Running Google API Analysis ...")
 start_time = time.time() 
 
 # Read data
-d = pd.read_csv("CMS-2018-0132.csv")
-
 if os.path.isfile(output_file):
     d = pd.read_csv(output_file)
 else:
@@ -29,8 +28,7 @@ else:
 
 # Loop over comments
 for index, row in d.iterrows():
-    
-    if row['score'] == "":
+    if pd.isna(row['score']):
         print(index)
     
         comment = row['commentText']
