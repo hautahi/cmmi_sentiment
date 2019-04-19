@@ -44,6 +44,7 @@ start_time = time.time()
 # Read data
 d = pd.read_csv("CMS-2018-0132.csv")
 
+d['score'] = ""
 for index, row in d.iterrows():
     
     comment = row['commentText']
